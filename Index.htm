@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Wing - Services & Logistics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --black: #1a1a1a;
+            --dark-gray: #2d2d2d;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* شريط التنقل */
+        header {
+            background-color: var(--black);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s, backdrop-filter 0.3s;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--gold);
+            transition: transform 0.3s;
+        }
+        
+        .logo-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+        
+        .logo-sub {
+            font-size: 12px;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-right: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .contact-btn {
+            background: linear-gradient(to right, var(--gold), var(--dark-gold));
+            color: var(--black);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* القسم الرئيسي */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(26, 26, 26, 0.8) 100%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-direction: column;
+        }
+        
+        .hero-logo-image {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--gold);
+            margin-bottom: 20px;
+            transition: transform 0.5s;
+        }
+        
+        .hero-logo-image:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+        
+        .hero-logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero h1 span {
+            color: var(--gold);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .cta-btn {
+            background: linear-gradient(to right, var(--gold), var(--dark-gold));
+            color: var(--black);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .cta-btn::after {
+            content: "➤";
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        /* قسم الخدمات */
+        .services {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--black);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--gold), var(--dark-gold));
+        }
+        
+        .section-title p {
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 20px auto 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--gold), var(--dark-gold));
+            transition: height 0.3s;
+        }
+        
+        .service-card:hover::before {
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 48px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+        
+        .service-card p {
+            color: #7f8c8d;
+        }
+
+        /* ======== قسم المشاريع ======== */
+        .projects {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            font-size: 20px;
+            color: var(--black);
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: #7f8c8d;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        /* ======== تنسيق بطاقة المشروع المدمجة (ثلاث صور) ======== */
+        .triple-image-collage {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            height: 250px;
+            gap: 2px; /* فاصل بسيط بين الصور */
+            background-color: #eee; /* لون الفاصل */
+        }
+
+        .collage-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collage-item.main-image {
+            grid-row: 1 / 3; /* تمتد على صفين */
+        }
+
+        .collage-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .collage-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.7);
+        }
+
+        .collage-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: var(--white);
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            text-align: center;
+        }
+
+        .collage-item:hover .collage-overlay {
+            transform: translateY(0);
+        }
+
+        .collage-overlay h4 {
+            color: var(--gold);
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .collage-overlay p {
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        /* قسم تواصل معنا */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+        }
+        
+        .contact .section-title h2 {
+            color: var(--white);
+        }
+        
+        .contact .section-title p {
+            color: #ccc;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--gold), var(--dark-gold));
+            color: var(--black);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* التذييل */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo-image {
+            width: 50px;
+            height: 50px;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--gold);
+        }
+        
+        .footer-logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-logo-main {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+        }
+        
+        .footer-logo-sub {
+            font-size: 11px;
+            color: var(--gold);
+        }
+        
+        .footer-logo p {
+            color: #ccc;
+            max-width: 300px;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .footer-contact {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-contact h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--gold);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            color: var(--gold);
+            margin-left: 10px;
+            font-size: 18px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* التجاوب مع الشاشات المختلفة */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin: 15px 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .services-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* تعديل عرض الصور الثلاث على الشاشات الصغيرة */
+            .triple-image-collage {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(3, 180px);
+                height: auto;
+            }
+            .collage-item.main-image {
+                grid-row: 1;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+
+        /* تأثيرات إضافية للشعار */
+        .logo-glow {
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+        }
+        
+        .logo-rotate {
+            animation: subtleRotate 10s infinite linear;
+        }
+        
+        @keyframes subtleRotate {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(1deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-1deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <div class="logo-image logo-glow">
+                        <img src="https://z-cdn-media.chatglm.cn/files/194e648d-f50a-4b64-9dda-99fc0594dd6f_%D8%B5%D9%82%D8%B1.jpg?auth_key=1864474136-cd1cd6eec340489cb127a593222ebb4c-0-2b3f1067f0465f01a9e1cdced92c7510" alt="شعار Diamond Wing">
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-main">Diamond Wing</div>
+                        <div class="logo-sub">Services & Logistics</div>
+                    </div>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#projects">مشاريعنا</a></li>
+                    <li><a href="#contact">تواصل معنا</a></li>
+                </ul>
+                <button class="contact-btn">تواصل معنا</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <div class="hero-logo-image logo-glow logo-rotate">
+                        <img src="https://z-cdn-media.chatglm.cn/files/194e648d-f50a-4b64-9dda-99fc0594dd6f_%D8%B5%D9%82%D8%B1.jpg?auth_key=1864474136-cd1cd6eec340489cb127a593222ebb4c-0-2b3f1067f0465f01a9e1cdced92c7510" alt="شعار Diamond Wing">
+                    </div>
+                    <h1>Diamond <span>Wing</span><br>Services & Logistics</h1>
+                </div>
+                <p>نحن متخصصون في تقديم خدمات شاملة في البناء والخدمات اللوجستية والكهرباء والديكورات. نقدم حلولاً عملية وموثوقة لجميع احتياجات مشاريعك.</p>
+                <button class="cta-btn">احصل على خدمتنا الآن</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>خدماتنا</h2>
+                <p>نقدم مجموعة واسعة من الخدمات المتكاملة لتلبية جميع احتياجات مشاريعك</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>البناء والتشييد</h3>
+                    <p>خدمات بناء متكاملة من التصميم إلى التنفيذ بأعلى معايير الجودة والسلامة</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>الخدمات الكهربائية</h3>
+                    <p>تركيب وصيانة جميع الأنظمة الكهربائية بكفاءة وأمان تام وفق المعايير العالمية</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3>الديكورات</h3>
+                    <p>تصميم وتنفيذ ديكورات مبتكرة تناسب جميع الأذواق والميزانيات بأحدث التقنيات</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck-loading"></i>
+                    </div>
+                    <h3>الخدمات اللوجستية</h3>
+                    <p>حلول لوجستية متكاملة لضمان سير عملياتك بسلاسة وكفاءة مع توفير الوقت والجهد</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======== قسم المشاريع ======== -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>مشاريعنا</h2>
+                <p>من أعمال مؤسسة الجناح الماسي للخدمات اللوجستية</p>
+            </div>
+            <div class="projects-grid">
+                
+                <!-- ======== بطاقة مشروع تبليط الساحات الخارجية (تم تعديلها) ======== -->
+                <div class="project-card">
+                    <div class="triple-image-collage">
+                        <!-- الصورة الرئيسية (المواد) -->
+                        <div class="collage-item main-image">
+                            <img src="https://z-cdn-media.chatglm.cn/files/ef83789f-6daf-45de-8e05-8fd405727e42_02f9f55d-aa7f-4569-b584-daba1ae86b20.jpg?auth_key=1864477604-7990e898c96d4af9aa99de0d0bd8b566-0-0dab52f6079343537b2061429d814e64" alt="توريد وتخزين مواد البناء">
+                            <div class="collage-overlay">
+                                <h4>توريد المواد</h4>
+                                <p>أجود أنواع رصائح البازلت</p>
+                            </div>
+                        </div>
+                        <!-- الصورة العلوية اليمنى (تم التبليط) -->
+                        <div class="collage-item">
+                            <img src="https://z-cdn-media.chatglm.cn/files/aa504c6e-c987-46e6-b1a7-d4348cee7f89_bfed55fb-64df-4fb2-8965-1a025b3a8538.jpg?auth_key=1864477095-e1724a72715a46a4aaefec5fdc78bb40-0-d6d9544f6a8991d874ca6a4da07060f1" alt="تم تبليط الموقع">
+                            <div class="collage-overlay">
+                                <h4>تم تبليط الموقع</h4>
+                                <p>الانتهاء من تركيب البلاط</p>
+                            </div>
+                        </div>
+                        <!-- الصورة السفلية اليمنى (التوريد اللوجستي) -->
+                        <div class="collage-item">
+                            <img src="https://z-cdn-media.chatglm.cn/files/9ebd1c13-716f-4ee6-84e5-01cf2f84219e_6faca68d-b7b0-4b2e-94cf-cfec1c582cfe.jpg?auth_key=1864477095-aaf4d95e11174021bac52f0b85c2df71-0-65cecf32a33d3fea361acaa18495b886" alt="التوريد اللوجستي للمعدات">
+                            <div class="collage-overlay">
+                                <h4>الخدمات اللوجستية</h4>
+                                <p>نقل المعدات والمواد</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>مشروع متكامل لتبليط الساحات الخارجية</h3>
+                        <p>مشروع يوضح مراحل العمل الأساسية: بدءاً من توريد وتخزين مواد البناء، مروراً بتحضير وتنظيف الموقع بدقة، وصولاً إلى التوريد اللوجستي الفعال للمعدات لضمان جودة التنفيذ والالتزام بالجدول الزمني.</p>
+                    </div>
+                </div>
+
+                <!-- المشروع الثاني -->
+                <div class="project-card">
+                    <img src="https://z-cdn-media.chatglm.cn/files/1a7dc0dc-573d-4428-8964-bbe1144a3c2b_%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202025-11-30%20064948.png?auth_key=1864474838-2a0e838263d24d0190451511315a039f-0-c8076dc73817522c7bf3a58b5f1b5c73" alt="مشروع الهيكل المعدني">
+                    <div class="project-info">
+                        <h3>مشروع الهيكل المعدني</h3>
+                        <p>إنشاء وتوريد وتركيب الهياكل الفولاذية لمشروع تجاري ضخم، مع الالتزام بجدول زمني محدد ومعايير الجودة العالمية.</p>
+                    </div>
+                </div>
+
+                <!-- المشروع الثالث -->
+                <div class="project-card">
+                    <img src="https://z-cdn-media.chatglm.cn/files/cbb4e110-453e-48f5-b598-ef53ba98c8d8_%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202025-11-30%20065000.png?auth_key=1864475339-6265deebb36e4ef2b3ed5ef8913dd516-0-c0b4a719e2f059f96bc2b7de21b61b18" alt="أعمال التركيب والصيانة">
+                    <div class="project-info">
+                        <h3>أعمال التركيب والصيانة</h3>
+                        <p>صورة توضح أعمال التركيب والصيانة الصناعية، مع التركيز على سلامة العمال وجودة التنفيذ.</p>
+                    </div>
+                </div>
+
+                <!-- المشروع الرابع -->
+                <div class="project-card">
+                    <img src="https://z-cdn-media.chatglm.cn/files/84a9df1e-b39a-4f65-9e3a-452f66f50bcc_%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202025-11-30%20065029.png?auth_key=1864475339-63bb00ccf87d458d85ce24406e734d47-0-d261eb7281f63da0688848f668991f0e" alt="تركيب الوحدات السكنية">
+                    <div class="project-info">
+                        <h3>تركيب الوحدات السكنية</h3>
+                        <p>صورة لمشروع تركيب وحدات سكنية جاهزة، يظهر كفاءة الفريق ودقة العمل في التركيب.</p>
+                    </div>
+                </div>
+
+                <!-- المشروع الخامس -->
+                <div class="project-card">
+                    <img src="https://z-cdn-media.chatglm.cn/files/5622d042-c0b5-40f6-9d1e-c91d50722ac6_%D9%84%D9%82%D8%B7%D8%A9%20%D8%B4%D8%A7%D8%B4%D8%A9%202025-11-30%20065108.png?auth_key=1864475339-23a83ab270404130a541177d3610096b-0-adabba972f1d01ddc3451de80c61a133" alt="التمديدات الصناعية">
+                    <div class="project-info">
+                        <h3>التمديدات الصناعية</h3>
+                        <p>صورة لمشروع تمديدات أنابيب صناعية ضخمة، تظهر نطاق العمل والخبرة في المشاريع الكبرى.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم تواصل معنا -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>تواصل معنا</h2>
+                <p>نحن هنا للإجابة على استفساراتك وتقديم أفضل الحلول لمشاريعك</p>
+            </div>
+            <div class="contact-form">
+                <!--  ======== التعديل هنا ======== -->
+                <form id="contactForm" action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">رقم الهاتف</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">الرسالة</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="footer-logo-container">
+                        <div class="footer-logo-image logo-glow">
+                            <img src="https://z-cdn-media.chatglm.cn/files/194e648d-f50a-4b64-9dda-99fc0594dd6f_%D8%B5%D9%82%D8%B1.jpg?auth_key=1864474136-cd1cd6eec340489cb127a593222ebb4c-0-2b3f1067f0465f01a9e1cdced92c7510" alt="شعار Diamond Wing">
+                        </div>
+                        <div class="footer-logo-text">
+                            <div class="footer-logo-main">Diamond Wing</div>
+                            <div class="footer-logo-sub">Services & Logistics</div>
+                        </div>
+                    </div>
+                    <p>نقدم حلولاً متكاملة في مجالات البناء والخدمات اللوجستية والكهرباء والديكورات بأعلى معايير الجودة والكفاءة.</p>
+                </div>
+                <!-- تم حذف الروابط المطلوبة وترك رابط فيسبوك فقط -->
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="https://www.facebook.com/share/16E5uv9C8g/" target="_blank">Facebook <i class="fab fa-facebook"></i></a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>معلومات الاتصال</h3>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>Aqaba-Jordan</div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>962797013012</div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>962782080028</div>
+                    </div>
+                    <div class="contact-info">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>Dwsljordan@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                جميع الحقوق محفوظة &copy; 2025 Diamond Wing
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // تم تعطيل الإرسال الافتراضي لأن Formspree سيتولى الأمر
+        // document.getElementById('contactForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     alert('شكراً لتواصلك معنا! سنرد عليك في أقرب وقت ممكن.');
+        //     this.reset();
+        // });
+
+        // إضافة تفاعل للنقر على الأزرار
+        document.querySelector('.contact-btn').addEventListener('click', function() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        document.querySelector('.cta-btn').addEventListener('click', function() {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // إضافة تأثير التمرير السلس للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // تغيير لون شريط التنقل عند التمرير
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.backgroundColor = 'var(--black)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
