@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diamond Wing - Services & Logistics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <!DOCTYPE html>
     <style>
         * {
             margin: 0;
@@ -135,23 +136,6 @@
         
         .nav-links a:hover::after {
             width: 100%;
-        }
-        
-        .contact-btn {
-            background: linear-gradient(to right, var(--gold), var(--dark-gold));
-            color: var(--black);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .contact-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         
         /* القسم الرئيسي */
@@ -457,83 +441,6 @@
             margin: 0;
         }
         
-        /* قسم تواصل معنا */
-        .contact {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
-            color: var(--white);
-        }
-        
-        .contact .section-title h2 {
-            color: var(--white);
-        }
-        
-        .contact .section-title p {
-            color: #ccc;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--gold);
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-        
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(to right, var(--gold), var(--dark-gold));
-            color: var(--black);
-            border: none;
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            transition: all 0.3s;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-        }
-        
         /* التذييل */
         footer {
             background-color: var(--black);
@@ -768,9 +675,7 @@
                     <li><a href="#services">الخدمات</a></li>
                     <li><a href="#about">من نحن</a></li>
                     <li><a href="#projects">مشاريعنا</a></li>
-                    <li><a href="#contact">تواصل معنا</a></li>
                 </ul>
-                <button class="contact-btn">تواصل معنا</button>
             </nav>
         </div>
     </header>
@@ -786,7 +691,6 @@
                     <h1>Diamond <span>Wing</span><br>Services & Logistics</h1>
                 </div>
                 <p>نحن متخصصون في تقديم خدمات شاملة في البناء والخدمات اللوجستية والكهرباء والديكورات. نقدم حلولاً عملية وموثوقة لجميع احتياجات مشاريعك.</p>
-                <button class="cta-btn">احصل على خدمتنا الآن</button>
             </div>
         </div>
     </section>
@@ -914,38 +818,6 @@
         </div>
     </section>
 
-    <!-- قسم تواصل معنا -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>تواصل معنا</h2>
-                <p>نحن هنا للإجابة على استفساراتك وتقديم أفضل الحلول لمشاريعك</p>
-            </div>
-            <div class="contact-form">
-                <!--  ======== التعديل هنا ======== -->
-                <form id="contactForm" action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
-                    <div class="form-group">
-                        <label for="name">الاسم الكامل</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">البريد الإلكتروني</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">رقم الهاتف</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">الرسالة</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">إرسال الرسالة</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
     <!-- التذييل -->
     <footer>
         <div class="container">
@@ -1004,22 +876,6 @@
     </footer>
 
     <script>
-        // تم تعطيل الإرسال الافتراضي لأن Formspree سيتولى الأمر
-        // document.getElementById('contactForm').addEventListener('submit', function(e) {
-        //     e.preventDefault();
-        //     alert('شكراً لتواصلك معنا! سنرد عليك في أقرب وقت ممكن.');
-        //     this.reset();
-        // });
-
-        // إضافة تفاعل للنقر على الأزرار
-        document.querySelector('.contact-btn').addEventListener('click', function() {
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        document.querySelector('.cta-btn').addEventListener('click', function() {
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        });
-        
         // إضافة تأثير التمرير السلس للروابط
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
