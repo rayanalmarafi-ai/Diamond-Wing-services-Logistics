@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta name="google-site-verification" content="MM2AmqgeqUkZbimeC_7TT2fCmGr5KsNvBToKqNDAHx4" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diamond Wing - Services & Logistics</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <!DOCTYPE html>
     <style>
+        /* === أنماط CSS الأساسية (لم تتغير) === */
         * {
             margin: 0;
             padding: 0;
@@ -19,7 +18,7 @@
             --gold: #D4AF37;
             --dark-gold: #B8860B;
             --black: #1a1a1a;
-            --dark-gray: #2d2d2d;
+            --dark-gray: #000000;
             --light-gray: #f5f5f5;
             --white: #ffffff;
         }
@@ -28,6 +27,7 @@
             background-color: var(--light-gray);
             color: var(--dark-gray);
             line-height: 1.6;
+            overflow-x: hidden; /* لمنع التمرير الأفقي في بعض التأثيرات */
         }
         
         .container {
@@ -36,7 +36,40 @@
             padding: 0 20px;
         }
         
-        /* شريط التنقل */
+        /* === شريط التحميل الجديد === */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--black);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader-wrapper.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(212, 175, 55, 0.3);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* === شريط التنقل === */
         header {
             background-color: var(--black);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
@@ -138,15 +171,17 @@
             width: 100%;
         }
         
-        /* القسم الرئيسي */
+        /* === القسم الرئيسي (Hero Section) مع تأثير Parallax === */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed; /* هذا هو سطر البارالكس */
             color: var(--white);
             padding: 180px 0 100px;
             text-align: center;
             position: relative;
+            /* تم إزالة الخلفية المتدرجة هنا لجعل البارالكس أوضح */
         }
         
         .hero::before {
@@ -156,7 +191,7 @@
             right: 0;
             bottom: 0;
             left: 0;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(26, 26, 26, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(26, 26, 26, 0.8) 100%); /* تعديل الشفافية */
         }
         
         .hero-content {
@@ -164,6 +199,17 @@
             margin: 0 auto;
             position: relative;
             z-index: 1;
+            /* إضافة تأثير الظهور الأولي */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .hero-logo {
@@ -234,13 +280,7 @@
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         
-        .cta-btn::after {
-            content: "➤";
-            margin-right: 10px;
-            font-size: 18px;
-        }
-        
-        /* قسم الخدمات */
+        /* === قسم الخدمات === */
         .services {
             padding: 80px 0;
             background-color: var(--white);
@@ -249,6 +289,15 @@
         .section-title {
             text-align: center;
             margin-bottom: 50px;
+            /* إضافة تأثير الظهور عند التمرير */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section-title.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .section-title h2 {
@@ -282,6 +331,7 @@
             gap: 30px;
         }
         
+        /* === بطاقات الخدمات التفاعلية (الجديدة) === */
         .service-card {
             background-color: var(--white);
             border-radius: 8px;
@@ -291,6 +341,16 @@
             border: 1px solid #eee;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            /* إضافة تأثير الظهور عند التمرير */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease 0.1s, transform 0.6s ease 0.1s;
+        }
+
+        .service-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .service-card::before {
@@ -333,7 +393,62 @@
             color: #7f8c8d;
         }
 
-        /* ======== قسم المشاريع ======== */
+        /* === الواجهة الخلفية لبطاقة الخدمة === */
+        .service-card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+            border-radius: 8px;
+        }
+
+        .service-card-back h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .service-card-back p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .service-card-back .contact-info-card {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .service-card-back .contact-info-card i {
+            margin-left: 10px;
+            color: var(--gold);
+        }
+
+        /* === تنسيق البطاقة لعملية الوجه === */
+        .service-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .service-card.flipped .service-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        /* === قسم المشاريع === */
         .projects {
             padding: 80px 0;
             background-color: var(--light-gray);
@@ -352,6 +467,15 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
+            /* إضافة تأثير الظهور عند التمرير */
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+        }
+
+        .project-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-card:hover {
@@ -364,6 +488,11 @@
             height: 250px;
             object-fit: cover;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
         }
 
         .project-info {
@@ -380,9 +509,34 @@
             color: #7f8c8d;
             font-size: 15px;
             line-height: 1.6;
+            /* إضافة تأثير اقتطاع النص */
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .project-info p.expended {
+            -webkit-line-clamp: unset;
+        }
+
+        .read-more-btn {
+            color: var(--gold);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            display: inline-block;
+            transition: color 0.3s;
+        }
+
+        .read-more-btn:hover {
+            color: var(--dark-gold);
         }
         
-        /* ======== تنسيق بطاقة المشروع المدمجة (ثلاث صور) ======== */
+        /* === تنسيق بطاقة المشروع المدمجة (ثلاث صور) === */
         .triple-image-collage {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -441,7 +595,7 @@
             margin: 0;
         }
         
-        /* التذييل */
+        /* === التذييل === */
         footer {
             background-color: var(--black);
             color: var(--white);
@@ -595,7 +749,97 @@
             font-size: 14px;
         }
         
-        /* التجاوب مع الشاشات المختلفة */
+        /* === زر التواصل الثابت (Sticky CTA) === */
+        .sticky-cta {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--gold);
+            color: var(--black);
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(100px);
+            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+            text-decoration: none;
+        }
+
+        .sticky-cta.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .sticky-cta i {
+            font-size: 20px;
+        }
+
+        .sticky-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* === معرض الصور (Lightbox) === */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            cursor: pointer;
+        }
+
+        .lightbox.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .lightbox-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: var(--white);
+            font-size: 30px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--gold);
+        }
+        
+        /* === التجاوب مع الشاشات المختلفة === */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -623,7 +867,6 @@
                 grid-template-columns: 1fr;
             }
 
-            /* تعديل عرض الصور الثلاث على الشاشات الصغيرة */
             .triple-image-collage {
                 grid-template-columns: 1fr;
                 grid-template-rows: repeat(3, 180px);
@@ -636,9 +879,17 @@
             .footer-content {
                 flex-direction: column;
             }
+
+            .sticky-cta {
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+                padding: 12px 15px;
+                justify-content: center;
+            }
         }
 
-        /* تأثيرات إضافية للشعار */
+        /* === تأثيرات إضافية للشعار === */
         .logo-glow {
             filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
         }
@@ -657,6 +908,11 @@
     </style>
 </head>
 <body>
+    <!-- === شريط التحميل الجديد === -->
+    <div class="loader-wrapper" id="loader">
+        <div class="loader"></div>
+    </div>
+
     <!-- شريط التنقل -->
     <header>
         <div class="container">
@@ -704,32 +960,80 @@
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-hard-hat"></i>
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-hard-hat"></i>
+                            </div>
+                            <h3>البناء والتشييد</h3>
+                            <p>خدمات بناء متكاملة من التصميم إلى التنفيذ بأعلى معايير الجودة والسلامة</p>
+                        </div>
+                        <div class="service-card-back">
+                            <h3>تواصل معنا</h3>
+                            <p>لاستفسارات ومشاريع البناء</p>
+                            <div class="contact-info-card">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>0782080028</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3>البناء والتشييد</h3>
-                    <p>خدمات بناء متكاملة من التصميم إلى التنفيذ بأعلى معايير الجودة والسلامة</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bolt"></i>
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3>الخدمات الكهربائية</h3>
+                            <p>تركيب وصيانة جميع الأنظمة الكهربائية بكفاءة وأمان تام وفق المعايير العالمية</p>
+                        </div>
+                        <div class="service-card-back">
+                            <h3>تواصل معنا</h3>
+                            <p>لاستفسارات ومشاريع الكهرباء</p>
+                            <div class="contact-info-card">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>0782080028</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3>الخدمات الكهربائية</h3>
-                    <p>تركيب وصيانة جميع الأنظمة الكهربائية بكفاءة وأمان تام وفق المعايير العالمية</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-roller"></i>
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-paint-roller"></i>
+                            </div>
+                            <h3>الديكورات</h3>
+                            <p>تصميم وتنفيذ ديكورات مبتكرة تناسب جميع الأذواق والميزانيات بأحدث التقنيات</p>
+                        </div>
+                        <div class="service-card-back">
+                            <h3>تواصل معنا</h3>
+                            <p>لاستفسارات ومشاريع الديكور</p>
+                            <div class="contact-info-card">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>0782080028</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3>الديكورات</h3>
-                    <p>تصميم وتنفيذ ديكورات مبتكرة تناسب جميع الأذواق والميزانيات بأحدث التقنيات</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-truck-loading"></i>
+                    <div class="service-card-inner">
+                        <div class="service-card-front">
+                            <div class="service-icon">
+                                <i class="fas fa-truck-loading"></i>
+                            </div>
+                            <h3>الخدمات اللوجستية</h3>
+                            <p>حلول لوجستية متكاملة لضمان سير عملياتك بسلاسة وكفاءة مع توفير الوقت والجهد</p>
+                        </div>
+                        <div class="service-card-back">
+                            <h3>تواصل معنا</h3>
+                            <p>لاستفسارات ومشاريع الخدمات اللوجستية</p>
+                            <div class="contact-info-card">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>0782080028</span>
+                            </div>
+                        </div>
                     </div>
-                    <h3>الخدمات اللوجستية</h3>
-                    <p>حلول لوجستية متكاملة لضمان سير عملياتك بسلاسة وكفاءة مع توفير الوقت والجهد</p>
                 </div>
             </div>
         </div>
@@ -744,7 +1048,7 @@
             </div>
             <div class="projects-grid">
                 
-                <!-- ======== بطاقة مشروع تبليط الساحات الخارجية (تم تعديلها) ======== -->
+                <!-- ======== بطاقة مشروع تبليط الساحات الخارجية ======== -->
                 <div class="project-card">
                     <div class="triple-image-collage">
                         <!-- الصورة الرئيسية (المواد) -->
@@ -775,6 +1079,7 @@
                     <div class="project-info">
                         <h3>مشروع متكامل لتبليط الساحات الخارجية</h3>
                         <p>مشروع يوضح مراحل العمل الأساسية: بدءاً من توريد وتخزين مواد البناء، مروراً بتحضير وتنظيف الموقع بدقة، وصولاً إلى التوريد اللوجستي الفعال للمعدات لضمان جودة التنفيذ والالتزام بالجدول الزمني.</p>
+                        <button class="read-more-btn">اقرأ المزيد</button>
                     </div>
                 </div>
 
@@ -784,6 +1089,7 @@
                     <div class="project-info">
                         <h3>مشروع الهيكل المعدني</h3>
                         <p>إنشاء وتوريد وتركيب الهياكل الفولاذية لمشروع تجاري ضخم، مع الالتزام بجدول زمني محدد ومعايير الجودة العالمية.</p>
+                        <button class="read-more-btn">اقرأ المزيد</button>
                     </div>
                 </div>
 
@@ -793,6 +1099,7 @@
                     <div class="project-info">
                         <h3>أعمال التركيب والصيانة</h3>
                         <p>صورة توضح أعمال التركيب والصيانة الصناعية، مع التركيز على سلامة العمال وجودة التنفيذ.</p>
+                        <button class="read-more-btn">اقرأ المزيد</button>
                     </div>
                 </div>
 
@@ -802,6 +1109,7 @@
                     <div class="project-info">
                         <h3>تركيب الوحدات السكنية</h3>
                         <p>صورة لمشروع تركيب وحدات سكنية جاهزة، يظهر كفاءة الفريق ودقة العمل في التركيب.</p>
+                        <button class="read-more-btn">اقرأ المزيد</button>
                     </div>
                 </div>
 
@@ -811,6 +1119,7 @@
                     <div class="project-info">
                         <h3>التمديدات الصناعية</h3>
                         <p>صورة لمشروع تمديدات أنابيب صناعية ضخمة، تظهر نطاق العمل والخبرة في المشاريع الكبرى.</p>
+                        <button class="read-more-btn">اقرأ المزيد</button>
                     </div>
                 </div>
 
@@ -834,7 +1143,6 @@
                     </div>
                     <p>نقدم حلولاً متكاملة في مجالات البناء والخدمات اللوجستية والكهرباء والديكورات بأعلى معايير الجودة والكفاءة.</p>
                 </div>
-                <!-- تم حذف الروابط المطلوبة وترك رابط فيسبوك فقط -->
                 <div class="footer-links">
                     <h3>روابط سريعة</h3>
                     <ul>
@@ -875,30 +1183,129 @@
         </div>
     </footer>
 
+    <!-- === زر التواصل الثابت (تم التعديل) === -->
+    <a href="https://wa.me/962780800028" class="sticky-cta" id="stickyCta" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span>تواصل عبر واتساب</span>
+    </a>
+
+    <!-- === معرض الصور (Lightbox) === -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightboxClose">&times;</span>
+            <img id="lightboxImage" src="" alt="Project Image">
+        </div>
+    </div>
+
     <script>
-        // إضافة تأثير التمرير السلس للروابط
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // === إخفاء شريط التحميل بعد تحميل الصفحة ===
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    document.getElementById('loader').classList.add('fade-out');
+                }, 500); // انتظر نصف ثانية
+            });
+
+            // === تأثير الظهور عند التمرير (Scroll-Reveal) ===
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            // مراقبة العناصر التي نريد إظهارها
+            const elementsToReveal = document.querySelectorAll('.section-title, .service-card, .project-card');
+            elementsToReveal.forEach(el => {
+                observer.observe(el);
+            });
+
+
+            // === تفاعل بطاقات الخدمات (الوجه) ===
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.classList.toggle('flipped');
+                });
+            });
+
+            // === زر "اقرأ المزيد" في المشاريع ===
+            const readMoreBtns = document.querySelectorAll('.read-more-btn');
+            readMoreBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const projectText = this.previousElementSibling;
+                    projectText.classList.toggle('expanded');
+                    this.textContent = projectText.classList.contains('expanded') ? 'اقرأ أقل' : 'اقرأ المزيد';
+                });
+            });
+
+            // === زر التواصل الثابت (Sticky CTA) ===
+            const stickyCta = document.getElementById('stickyCta');
+            const heroSection = document.getElementById('home');
+            
+            window.addEventListener('scroll', () => {
+                // تغيير لون شريط التنقل عند التمرير
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.backgroundColor = 'var(--black)';
+                    header.style.backdropFilter = 'none';
+                }
+
+                // إظهار أو إخفاء الزر الثابت
+                if (window.scrollY > heroSection.offsetHeight + 200) {
+                    stickyCta.classList.add('show');
+                } else {
+                    stickyCta.classList.remove('show');
                 }
             });
-        });
-        
-        // تغيير لون شريط التنقل عند التمرير
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.backgroundColor = 'rgba(26, 26, 26, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.backgroundColor = 'var(--black)';
-                header.style.backdropFilter = 'none';
-            }
+
+            // === معرض الصور (Lightbox) ===
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImage');
+            const lightboxClose = document.getElementById('lightboxClose');
+            const projectImages = document.querySelectorAll('.project-card img, .collage-item img');
+
+            projectImages.forEach(img => {
+                img.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    lightbox.classList.add('active');
+                    lightboxImg.src = this.src;
+                });
+            });
+
+            lightboxClose.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                }
+            });
+
+            // === إضافة تأثير التمرير السلس للروابط ===
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
