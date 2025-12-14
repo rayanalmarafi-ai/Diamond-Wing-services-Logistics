@@ -296,7 +296,7 @@
             <!--المشروع السادس -->
                 <div class="project-card" data-category="decoration">
                     <img src="https://i.pinimg.com/originals/60/5a/e6/605ae6c11762e6f626a1cb56bc86a873.jpg" alt="تصميم داخلي حديث">
-                    <img            src="https://tse2.mm.bing.net/th/id/OIP.tnSJdQp0xkeadPZd1A6_QgHaEK?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3" alt="تصميم داخلي حديث">
+                    .
                     <div class="project-info">
                         <h3>تصميم داخلي حديث</h3>
                         <p>صورة لمشروع تصميم داخلي  يبرز الأناقة والوظائف العملية.</p>
@@ -369,6 +369,108 @@
             </div>
         </div>
     </section>
+    <!-- قسم التقييمات -->
+<section class="testimonials-section" id="testimonials">
+    <div class="container">
+        <div class="section-title">
+            <h2>تقييمات الزوار</h2>
+            <p>شاركنا رأيك وكن جزءاً من نجاحنا</p>
+        </div>
+        
+        <div class="testimonials-content">
+            <!-- نموذج إضافة تقييم جديد -->
+            <div class="add-testimonial-form">
+                <h3><i class="fas fa-edit"></i> أضف تقييمك</h3>
+                <form id="testimonialForm">
+                    <div class="form-group">
+                        <label for="userName"><i class="fas fa-user"></i> الاسم (اختياري)</label>
+                        <input type="text" id="userName" placeholder="يمكنك استخدام اسم مستعار">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label><i class="fas fa-star"></i> التقييم</label>
+                        <div class="rating-stars">
+                            <input type="radio" id="star5" name="rating" value="5">
+                            <label for="star5" title="ممتاز">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="جيد جداً">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="جيد">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="مقبول">★</label>
+                            <input type="radio" id="star1" name="rating" value="1" required>
+                            <label for="star1" title="ضعيف">★</label>
+                        </div>
+                        <div class="rating-error" id="ratingError"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="testimonialText"><i class="fas fa-comment"></i> التعليق</label>
+                        <textarea id="testimonialText" placeholder="اكتب تقييمك أو اقتراحك هنا..." rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userEmail"><i class="fas fa-envelope"></i> البريد الإلكتروني (لإرسال نسخة)</label>
+                        <input type="email" id="userEmail" placeholder="example@gmail.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="privacy-agreement">
+                            <input type="checkbox" id="privacyAgreement" required>
+                            <label for="privacyAgreement">
+                                أوافق على سياسة الخصوصية وأسمح بنشر التقييم على الموقع
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn" id="submitTestimonial">
+                        <i class="fas fa-paper-plane"></i> إرسال التقييم
+                    </button>
+                    
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+            
+            <!-- عرض التقييمات الحالية -->
+            <div class="testimonials-display">
+                <h3><i class="fas fa-comments"></i> أحدث التقييمات</h3>
+                <div class="testimonials-grid" id="testimonialsGrid">
+                    <!-- سيتم تحميل التقييمات هنا -->
+                </div>
+                
+                <div class="stats-summary">
+                    <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h4 id="averageRating">4.8</h4>
+                            <p>متوسط التقييم</p>
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h4 id="totalTestimonials">47</h4>
+                            <p>عدد التقييمات</p>
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-icon">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="stats-content">
+                            <h4>96%</h4>
+                            <p>رضا العملاء</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     
         
 
